@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".LoginActivity.LoginActivity">
+
+    <EditText
+        android:id="@+id/fileNumber"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_txt_bg"
+        android:layout_centerHorizontal="true"
+        android:hint="File number"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/otp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Enter OTP"
+        android:layout_below="@id/fileNumber"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_txt_bg"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@id/otp"
+        android:layout_centerHorizontal="true"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:layout_below="@id/btnSubmit">
+
+      <TextView
+          android:id="@+id/text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textStyle="bold"
+          android:text="Don't have an account ?" />
+      <TextView
+          android:id="@+id/newAccount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="3dp"
+          android:textStyle="bold|italic"
+          android:text="Create Account"
+          android:textColor="@color/purple_700" />
+
+  </LinearLayout>
+
+
+</RelativeLayout>
