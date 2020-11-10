@@ -8,35 +8,34 @@
     android:gravity="center"
     tools:context=".LoginActivity.LoginActivity">
 
+    <com.hbb20.CountryCodePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cpp"
+        android:layout_above="@id/mobileNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"/>
+
     <EditText
-        android:id="@+id/fileNumber"
+        android:id="@+id/mobileNumber"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/edit_txt_bg"
         android:layout_centerHorizontal="true"
-        android:hint="File number"
+        android:hint="Mobile number"
+        android:inputType="number"
+        android:gravity="center"
         android:padding="10dp"/>
-
-    <EditText
-        android:id="@+id/otp"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:hint="Enter OTP"
-        android:layout_below="@id/fileNumber"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/edit_txt_bg"
-        android:padding="10dp"
-        android:layout_margin="10dp"/>
-
 
     <Button
         android:id="@+id/btnSubmit"
+        android:layout_marginTop="20dp"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Submit"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_below="@id/otp"
+        android:layout_below="@id/mobileNumber"
         android:layout_centerHorizontal="true"/>
 
   <LinearLayout

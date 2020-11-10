@@ -53,14 +53,14 @@ public class RegisterActivity_1 extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//       FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
-//
-//       if (user != null){
-//           startActivity(new Intent(RegisterActivity_1.this, MainActivity.class));
-//           finish();
-//       }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+       FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+
+       if (user != null){
+           startActivity(new Intent(RegisterActivity_1.this, MainActivity.class));
+           finish();
+       }
+    }
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHospital">
-        <activity android:name=".RegisterActivity.RegisterActivity_3"></activity>
+        <activity android:name=".LoginActivity.LoginOTPVerification"></activity>
+        <activity android:name=".RegisterActivity.RegisterActivity_3" />
         <activity android:name=".RegisterActivity.RegisterActivity_2" />
         <activity android:name=".RegisterActivity.RegisterOtpVerification" />
         <activity android:name=".RegisterActivity.RegisterActivity_1" />
