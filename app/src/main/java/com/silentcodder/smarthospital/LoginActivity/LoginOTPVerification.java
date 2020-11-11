@@ -83,6 +83,7 @@ public class LoginOTPVerification extends AppCompatActivity {
                             Intent intent = new Intent(LoginOTPVerification.this, MainActivity.class);
                             intent.putExtra("Mobile",mPhoneNumber);
                             startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(LoginOTPVerification.this, "Error...", Toast.LENGTH_SHORT).show();
                         }

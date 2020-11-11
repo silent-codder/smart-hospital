@@ -11,18 +11,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.silentcodder.smarthospital.R;
-public class HomeFragment extends Fragment {
 
+public class CompletedAppointmentFragment extends Fragment {
+    TextView mBtnAppointment;
     Button mBtnGetAppointment;
-    TextView mCompleted;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_completed_appointment, container, false);
 
+        mBtnAppointment = view.findViewById(R.id.appointment);
         mBtnGetAppointment = view.findViewById(R.id.btnGetAppointment);
-        mCompleted = view.findViewById(R.id.completed);
+
+
+        mBtnAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment mFragment = new HomeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, mFragment).commit();
+            }
+        });
+
         mBtnGetAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,13 +40,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        mCompleted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment mFragment = new CompletedAppointmentFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, mFragment).commit();
-            }
-        });
         return view;
     }
 }

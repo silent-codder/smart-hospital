@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Fragments.BookAppointmentFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Appointment"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/apmChildName"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Child Name"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_txt_bg"
+        android:padding="10dp"/>
+    <EditText
+        android:id="@+id/apmProblem"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_txt_bg"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:hint="Write your problem (Optional)..."
+        android:gravity="start"
+        android:padding="10dp"
+        android:maxLines="2"
+        android:maxLength="60"/>
+
+    <EditText
+        android:id="@+id/apmDate"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_txt_bg"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Appointment date"
+        android:drawableRight="@drawable/ic_calender"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/apmBtnBookAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Appointment"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+</LinearLayout>
