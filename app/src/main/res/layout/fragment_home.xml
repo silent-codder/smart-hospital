@@ -21,6 +21,7 @@
 
 
    <RelativeLayout
+       android:id="@+id/layout"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginLeft="20dp"
@@ -51,6 +52,12 @@
            android:textSize="18sp"
            android:textStyle="bold" />
    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout"
+        android:id="@+id/recycleView"/>
 
     <Button
         android:id="@+id/btnGetAppointment"

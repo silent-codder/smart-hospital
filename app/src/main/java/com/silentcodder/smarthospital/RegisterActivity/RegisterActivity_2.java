@@ -78,13 +78,13 @@ public class RegisterActivity_2 extends AppCompatActivity {
                     pd.show();
 
                     HashMap<String , Object> map = new HashMap<>();
-                    map.put("firstName",FirstName);
-                    map.put("lastName",LastName);
-                    map.put("address",Address);
-                    map.put("userId",UserId);
-                    map.put("mobileNumber",mPhone);
+                    map.put("First-Name",FirstName);
+                    map.put("Last-Name",LastName);
+                    map.put("Address",Address);
+                    map.put("User-Id",UserId);
+                    map.put("Mobile-Number",mPhone);
 
-                    firebaseFirestore.collection("Users").document(UserId).set(map)
+                    firebaseFirestore.collection("Parent-Details").document(UserId).set(map)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

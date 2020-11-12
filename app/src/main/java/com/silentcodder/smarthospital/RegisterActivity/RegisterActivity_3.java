@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -65,13 +66,19 @@ public class RegisterActivity_3 extends AppCompatActivity {
         UserId = firebaseAuth.getCurrentUser().getUid();
         pd = new ProgressDialog(this);
 
+
         firebaseFirestore.collection("Users").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (!value.isEmpty()){
                     int count = value.size();
                     String size = String.valueOf(count);
-                    fileNumber = size;
+
+                    if (size.isEmpty()){
+                        fileNumber = "1";
+                    }else {
+                        fileNumber = size;
+                    }
                 }
             }
         });
@@ -132,14 +139,14 @@ public class RegisterActivity_3 extends AppCompatActivity {
                    pd.show();
 
                    HashMap<String,Object> map = new HashMap<>();
-                   map.put("childName",ChildName);
-                   map.put("childDOB",ChildDOB);
-                   map.put("weight",Weight);
-                   map.put("gender",gender);
-                   map.put("timeStamp",System.currentTimeMillis());
-                   map.put("pFileNumber", fileNumber);
+                   map.put("Child-Name",ChildName);
+                   map.put("Child-DOB",ChildDOB);
+                   map.put("Child-Weight",Weight);
+                   map.put("Child-Gender",gender);
+                   map.put("Time-Stamp",System.currentTimeMillis());
+                   map.put("File-Number", fileNumber);
 
-                   firebaseFirestore.collection("Users").document(UserId).update(map)
+                   firebaseFirestore.collection("Child-Details").document(UserId).set(map)
                            .addOnCompleteListener(new OnCompleteListener<Void>() {
                                @Override
                                public void onComplete(@NonNull Task<Void> task) {

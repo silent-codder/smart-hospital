@@ -43,24 +43,19 @@ public class RegisterActivity_1 extends AppCompatActivity {
                 intent.putExtra("Mobile",mCpp.getFullNumberWithPlus().replace(" ",""));
                 startActivity(intent);
 
-                HashMap<String,Object> map = new HashMap<>();
-                map.put("mobile",mCpp.getFullNumberWithPlus());
-
-                firebaseFirestore.collection("MobileNumber").add(map);
-
             }
         });
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-       FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
-
-       if (user != null){
-           startActivity(new Intent(RegisterActivity_1.this, MainActivity.class));
-           finish();
-       }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//       FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+//
+//       if (user != null){
+//           startActivity(new Intent(RegisterActivity_1.this, MainActivity.class));
+//           finish();
+//       }
+//    }
 }

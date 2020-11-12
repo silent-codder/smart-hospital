@@ -28,6 +28,7 @@ import com.hbb20.CountryCodePicker;
 import com.silentcodder.smarthospital.MainActivity;
 import com.silentcodder.smarthospital.R;
 import com.silentcodder.smarthospital.RegisterActivity.RegisterActivity_1;
+import com.silentcodder.smarthospital.RegisterActivity.RegisterActivity_3;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    Query query = firebaseFirestore.collection("MobileNumber").whereEqualTo("mobile", mCpp.getFullNumberWithPlus());
+                    Query query = firebaseFirestore.collection("Parent-Details").whereEqualTo("Mobile-Number", mCpp.getFullNumberWithPlus());
                     query.addSnapshotListener(new EventListener<QuerySnapshot>() {
                         @Override
                         public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
