@@ -12,17 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHospital">
-        <activity android:name=".ChildFile"></activity>
-        <activity android:name=".LoginActivity.LoginOTPVerification" />
-        <activity android:name=".LoginActivity.LoginActivity" />
-        <activity android:name=".RegisterActivity.RegisterActivity_2" />
-        <activity android:name=".RegisterActivity.RegisterOtpVerification" />
-        <activity android:name=".RegisterActivity.RegisterActivity_1" />
-        <activity android:name=".RegisterActivity.RegisterActivity_3" />
+        <activity android:name=".User.MainActivity"></activity>
+        <activity android:name=".Counter.CounterMainActivity" />
+        <activity android:name=".User.ChildFile" />
+        <activity android:name=".User.LoginActivity.LoginOTPVerification" />
+        <activity android:name=".User.LoginActivity.LoginActivity" />
+        <activity android:name=".User.RegisterActivity.RegisterActivity_2" />
+        <activity android:name=".User.RegisterActivity.RegisterOtpVerification" />
+        <activity android:name=".User.RegisterActivity.RegisterActivity_1" />
+        <activity android:name=".User.RegisterActivity.RegisterActivity_3" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

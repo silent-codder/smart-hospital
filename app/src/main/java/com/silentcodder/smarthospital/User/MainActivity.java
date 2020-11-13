@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital;
+package com.silentcodder.smarthospital.User;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.silentcodder.smarthospital.Fragments.HistoryFragment;
-import com.silentcodder.smarthospital.Fragments.HomeFragment;
-import com.silentcodder.smarthospital.Fragments.ProfileFragment;
+import com.silentcodder.smarthospital.R;
+import com.silentcodder.smarthospital.User.Fragments.HistoryFragment;
+import com.silentcodder.smarthospital.User.Fragments.HomeFragment;
+import com.silentcodder.smarthospital.User.Fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 

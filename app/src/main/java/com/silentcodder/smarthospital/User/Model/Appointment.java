@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Model;
+package com.silentcodder.smarthospital.User.Model;
 
 public class Appointment{
 

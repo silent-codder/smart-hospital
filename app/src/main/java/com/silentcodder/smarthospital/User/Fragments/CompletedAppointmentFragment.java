@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Fragments;
+package com.silentcodder.smarthospital.User.Fragments;
 
 import android.os.Bundle;
 

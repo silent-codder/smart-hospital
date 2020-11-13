@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Fragments;
+package com.silentcodder.smarthospital.User.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -23,14 +23,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.silentcodder.smarthospital.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Locale;
 
 
 public class BookAppointmentFragment extends Fragment {

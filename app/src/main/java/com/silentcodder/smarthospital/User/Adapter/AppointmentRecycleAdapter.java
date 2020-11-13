@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Adapter;
+package com.silentcodder.smarthospital.User.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.silentcodder.smarthospital.Model.Appointment;
+import com.silentcodder.smarthospital.User.Model.Appointment;
 import com.silentcodder.smarthospital.R;
 
 import java.util.List;

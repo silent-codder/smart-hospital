@@ -1,12 +1,10 @@
-package com.silentcodder.smarthospital.LoginActivity;
+package com.silentcodder.smarthospital.User.LoginActivity;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -25,10 +20,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.hbb20.CountryCodePicker;
-import com.silentcodder.smarthospital.MainActivity;
+import com.silentcodder.smarthospital.User.MainActivity;
 import com.silentcodder.smarthospital.R;
-import com.silentcodder.smarthospital.RegisterActivity.RegisterActivity_1;
-import com.silentcodder.smarthospital.RegisterActivity.RegisterActivity_3;
+import com.silentcodder.smarthospital.User.RegisterActivity.RegisterActivity_1;
 
 public class LoginActivity extends AppCompatActivity {
 

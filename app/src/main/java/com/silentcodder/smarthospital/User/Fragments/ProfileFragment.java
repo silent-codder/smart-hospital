@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Fragments;
+package com.silentcodder.smarthospital.User.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.silentcodder.smarthospital.ChildFile;
+import com.silentcodder.smarthospital.User.ChildFile;
 import com.silentcodder.smarthospital.R;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
-    String UserId;
+    String UserId,FirstName,LastName;
     Uri profileImgUri;
     ProgressDialog pd;
 
@@ -81,8 +81,8 @@ public class ProfileFragment extends Fragment {
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String FirstName = documentSnapshot.getString("First-Name");
-                String LastName = documentSnapshot.getString("Last-Name");
+                 FirstName = documentSnapshot.getString("First-Name");
+                 LastName = documentSnapshot.getString("Last-Name");
                 String Address = documentSnapshot.getString("Address");
                 String MobileNumber = documentSnapshot.getString("Mobile-Number");
                 String ProfileUrl = documentSnapshot.getString("ProfileImgUrl");
@@ -110,6 +110,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ChildFile.class);
                 intent.putExtra("UserId",UserId);
+                intent.putExtra("firstName",FirstName);
+                intent.putExtra("lastName",LastName);
                 startActivity(intent);
             }
         });

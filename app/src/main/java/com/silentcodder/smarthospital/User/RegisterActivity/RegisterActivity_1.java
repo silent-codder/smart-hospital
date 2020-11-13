@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.RegisterActivity;
+package com.silentcodder.smarthospital.User.RegisterActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,14 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
-import com.silentcodder.smarthospital.MainActivity;
 import com.silentcodder.smarthospital.R;
-
-import java.util.HashMap;
 
 public class RegisterActivity_1 extends AppCompatActivity {
 

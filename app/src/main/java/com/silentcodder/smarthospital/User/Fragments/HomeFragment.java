@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Fragments;
+package com.silentcodder.smarthospital.User.Fragments;
 
 import android.os.Bundle;
 
@@ -21,8 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.silentcodder.smarthospital.Adapter.AppointmentRecycleAdapter;
-import com.silentcodder.smarthospital.Model.Appointment;
+import com.silentcodder.smarthospital.User.Adapter.AppointmentRecycleAdapter;
+import com.silentcodder.smarthospital.User.Model.Appointment;
 import com.silentcodder.smarthospital.R;
 
 import java.util.ArrayList;
