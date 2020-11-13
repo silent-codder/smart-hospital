@@ -1,5 +1,6 @@
 package com.silentcodder.smarthospital.Fragments;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,7 +26,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.silentcodder.smarthospital.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 public class BookAppointmentFragment extends Fragment {
@@ -36,6 +42,8 @@ public class BookAppointmentFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     String UserId;
     ProgressDialog pd;
+    Calendar calendar;
+   // int day,month,year;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,11 +55,46 @@ public class BookAppointmentFragment extends Fragment {
         mDate = view.findViewById(R.id.apmDate);
         mBookAppointment = view.findViewById(R.id.apmBtnBookAppointment);
         mBtnCancel = view.findViewById(R.id.apmBtnCancel);
+        calendar = Calendar.getInstance();
         pd = new ProgressDialog(getContext());
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         UserId = firebaseAuth.getCurrentUser().getUid();
+
+        mDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+
+                try {
+                    c.setTime(new SimpleDateFormat("MMM").parse("Aug"));
+                    int mMonth = c.get(Calendar.MONTH) + 1;
+                    int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                            new DatePickerDialog.OnDateSetListener() {
+
+                                @Override
+                                public void onDateSet(DatePicker view, int year,
+                                                      int monthOfYear, int dayOfMonth) {
+
+                                    SimpleDateFormat format = new SimpleDateFormat(" MMM yyyy");
+                                    String date=format.format(calendar.getTime());
+                                    mDate.setText(dayOfMonth + "" +date);
+
+                                }
+                            }, mYear, mMonth, mDay);
+                    datePickerDialog.show();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         firebaseFirestore.collection("Child-Details").document(UserId)
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

@@ -1,9 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ProfileFragment">
 
-</FrameLayout>
+<RelativeLayout
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_margin="1dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/profile_bg"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImg"
+        android:layout_below="@id/profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:civ_border_width="1dp"
+        android:src="@drawable/ic_person"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_below="@id/profileImg"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editProfile"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/profileMobileNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_phone"
+        android:text=" "
+        android:layout_below="@id/profileName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/profileAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:layout_below="@id/profileMobileNumber"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_location"/>
+
+</RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Child Information : "
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:padding="10dp"
+               android:layout_height="wrap_content">
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/childProfile"
+                   android:layout_width="60dp"
+                   android:layout_height="60dp"
+                   android:src="@drawable/ic_person"
+                   app:civ_border_width="0.5dp"/>
+               <TextView
+                   android:id="@+id/name"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=""
+                   android:layout_gravity="center"
+                   android:textSize="18sp"
+                   android:layout_margin="15dp"
+                   android:textStyle="bold"/>
+
+               <Button
+                   android:id="@+id/btnShowFile"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_marginLeft="75dp"
+                   android:gravity="center"
+                   android:text="Show File"
+                   android:textColor="@color/white"
+                   android:textAllCaps="false"
+                   android:textStyle="bold" />
+
+           </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>
