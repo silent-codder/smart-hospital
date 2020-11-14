@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.silentcodder.smarthospital.Counter.CounterMainActivity;
+import com.silentcodder.smarthospital.Counter.LoginPageCounter;
 
 public class SelectActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -32,7 +33,7 @@ public class SelectActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                     if (selectCategory == "Counter"){
-                        startActivity(new Intent(SelectActivity.this, CounterMainActivity.class));
+                        startActivity(new Intent(SelectActivity.this, LoginPageCounter.class));
                     }
             }
         });
