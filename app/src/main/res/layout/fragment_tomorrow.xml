@@ -6,8 +6,7 @@
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:layout_marginBottom="52dp"
-    tools:context=".Counter.Fragments.CounterHomeFragment">
-
+    tools:context=".Counter.Fragments.TomorrowFragment">
 
     <RelativeLayout
         android:id="@+id/layout"
@@ -56,16 +55,16 @@
             android:id="@+id/today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Today's Appointment"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:text="Today"
+            android:textStyle="normal"/>
         <TextView
             android:id="@+id/tomorrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="Tomorrow"
-            android:textStyle="normal"/>
+            android:text="Tomorrow Appointments"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/yesterday"
             android:layout_width="wrap_content"

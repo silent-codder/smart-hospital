@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.silentcodder.smarthospital.Counter.CounterMainActivity;
 import com.silentcodder.smarthospital.Counter.LoginPageCounter;
 
@@ -54,6 +56,5 @@ public class SelectActivity extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
 }

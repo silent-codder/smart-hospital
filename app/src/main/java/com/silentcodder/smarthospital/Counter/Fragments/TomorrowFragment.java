@@ -25,38 +25,34 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.silentcodder.smarthospital.Counter.Adapter.CounterAppointmentAdapter;
 import com.silentcodder.smarthospital.Counter.Model.CounterAppointment;
 import com.silentcodder.smarthospital.R;
-import com.silentcodder.smarthospital.User.Adapter.AppointmentRecycleAdapter;
-import com.silentcodder.smarthospital.User.Model.Appointment;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-public class CounterHomeFragment extends Fragment {
+public class TomorrowFragment extends Fragment {
 
+
+    TextView mToady,mYesterday;
     RecyclerView mRecycleView;
-    TextView mTomorrow,mYesterday;
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
 
     List<CounterAppointment> counterAppointment;
     CounterAppointmentAdapter counterAppointmentAdapter;
-    String UserId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_counter_home, container, false);
+        View view =  inflater.inflate(R.layout.fragment_tomorrow, container, false);
+        mToady = view.findViewById(R.id.today);
+        mYesterday = view.findViewById(R.id.yesterday);
+
         mRecycleView = view.findViewById(R.id.recycleView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mTomorrow = view.findViewById(R.id.tomorrow);
-        mYesterday = view.findViewById(R.id.yesterday);
-
-        UserId = firebaseAuth.getCurrentUser().getUid();
-
 
         //Recycle view
         counterAppointment = new ArrayList<>();
@@ -73,7 +69,7 @@ public class CounterHomeFragment extends Fragment {
 
         Toast.makeText(getContext(), dateString, Toast.LENGTH_LONG).show();
 
-        Query query = appointmentRef.whereEqualTo("AppointmentDate",dateString);
+        Query query = appointmentRef.whereNotEqualTo("AppointmentDate",dateString);
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -88,12 +84,12 @@ public class CounterHomeFragment extends Fragment {
             }
         });
 
-        //fragments button
 
-        mTomorrow.setOnClickListener(new View.OnClickListener() {
+        //Fragments button
+        mToady.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new TomorrowFragment();
+                Fragment fragment = new CounterHomeFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
             }
         });

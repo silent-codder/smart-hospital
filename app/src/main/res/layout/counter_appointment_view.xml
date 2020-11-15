@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/childName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajinkya Shinde"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14 Nov 2020"
+            android:layout_below="@id/childName"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/problem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Testing propose..."
+            android:layout_below="@+id/date"
+            android:textSize="16sp"/>
+
+<!--        <TextView-->
+<!--            -->
+<!--            android:layout_width="90dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="2dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_below="@id/problem"-->
+<!--            android:background="@drawable/pending_txt_bg"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:text="Show File"/>-->
+
+        <Button
+            android:id="@+id/btnShowFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show File"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_below="@id/problem"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
