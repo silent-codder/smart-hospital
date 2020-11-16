@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -65,6 +66,7 @@ public class CounterAppointmentAdapter extends RecyclerView.Adapter<CounterAppoi
 
     @Override
     public int getItemCount() {
+
         return counterAppointments.size();
     }
 
@@ -72,7 +74,7 @@ public class CounterAppointmentAdapter extends RecyclerView.Adapter<CounterAppoi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mChildName,mProblem,mDate;
-        Button mBtnShowFile;
+        CardView mBtnShowFile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

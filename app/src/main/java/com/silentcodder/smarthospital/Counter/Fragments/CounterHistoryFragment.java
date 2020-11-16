@@ -30,11 +30,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class YesterdayFragment extends Fragment {
-
-    TextView mToday,mTomorrow;
+public class CounterHistoryFragment extends Fragment {
 
     RecyclerView mRecycleView;
+    TextView mAppointment;
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
@@ -46,13 +45,12 @@ public class YesterdayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_yesterday, container, false);
-        mToday = view.findViewById(R.id.today);
-        mTomorrow = view.findViewById(R.id.tomorrow);
+        View view = inflater.inflate(R.layout.fragment_history_counter, container, false);
 
         mRecycleView = view.findViewById(R.id.recycleView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        mAppointment = view.findViewById(R.id.appointment);
 
         //Recycle view
         counterAppointment = new ArrayList<>();
@@ -67,9 +65,9 @@ public class YesterdayFragment extends Fragment {
         String dateString = (String) DateFormat
                 .format("dd MMM yyyy",new Date(date)).toString();
 
-        Toast.makeText(getContext(), dateString, Toast.LENGTH_LONG).show();
 
-        Query query = appointmentRef.whereNotEqualTo("AppointmentDate",dateString);
+        Query query = appointmentRef.whereLessThan("AppointmentDate",dateString)
+                .orderBy("AppointmentDate",Query.Direction.DESCENDING);
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -85,18 +83,11 @@ public class YesterdayFragment extends Fragment {
         });
 
 
-        //Fragments button
-        mToday.setOnClickListener(new View.OnClickListener() {
+        //Fragment Button
+        mAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new CounterHomeFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-            }
-        });
-        mTomorrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new TomorrowFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
             }
         });

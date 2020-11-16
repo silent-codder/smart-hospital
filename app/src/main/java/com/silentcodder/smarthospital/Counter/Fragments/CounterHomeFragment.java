@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -25,8 +24,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.silentcodder.smarthospital.Counter.Adapter.CounterAppointmentAdapter;
 import com.silentcodder.smarthospital.Counter.Model.CounterAppointment;
 import com.silentcodder.smarthospital.R;
-import com.silentcodder.smarthospital.User.Adapter.AppointmentRecycleAdapter;
-import com.silentcodder.smarthospital.User.Model.Appointment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,7 +33,7 @@ import java.util.List;
 public class CounterHomeFragment extends Fragment {
 
     RecyclerView mRecycleView;
-    TextView mTomorrow,mYesterday;
+    TextView mData,mHistory;
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
@@ -52,8 +49,8 @@ public class CounterHomeFragment extends Fragment {
         mRecycleView = view.findViewById(R.id.recycleView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mTomorrow = view.findViewById(R.id.tomorrow);
-        mYesterday = view.findViewById(R.id.yesterday);
+        mData = view.findViewById(R.id.data);
+        mHistory = view.findViewById(R.id.history);
 
         UserId = firebaseAuth.getCurrentUser().getUid();
 
@@ -71,9 +68,9 @@ public class CounterHomeFragment extends Fragment {
         String dateString = (String) DateFormat
                 .format("dd MMM yyyy",new Date(date)).toString();
 
-        Toast.makeText(getContext(), dateString, Toast.LENGTH_LONG).show();
 
-        Query query = appointmentRef.whereEqualTo("AppointmentDate",dateString);
+        Query query = appointmentRef.whereGreaterThanOrEqualTo("AppointmentDate",dateString)
+                .orderBy("AppointmentDate",Query.Direction.ASCENDING).limit(100);
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -88,19 +85,11 @@ public class CounterHomeFragment extends Fragment {
             }
         });
 
-        //fragments button
-
-        mTomorrow.setOnClickListener(new View.OnClickListener() {
+        //Fragment Button
+        mHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new TomorrowFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-            }
-        });
-        mYesterday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new YesterdayFragment();
+                Fragment fragment = new CounterHistoryFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
             }
         });
