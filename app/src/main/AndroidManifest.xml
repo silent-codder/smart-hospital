@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHospital">
-        <activity android:name=".Counter.LoginPageCounter"></activity>
+        <activity android:name=".Counter.AddBill"></activity>
+        <activity android:name=".Counter.CounterChildFile" />
+        <activity android:name=".Counter.UpdateProfileActivity" />
+        <activity android:name=".Counter.LoginPageCounter" />
         <activity android:name=".User.MainActivity" />
         <activity android:name=".SelectActivity" />
         <activity android:name=".User.ChildFile" />

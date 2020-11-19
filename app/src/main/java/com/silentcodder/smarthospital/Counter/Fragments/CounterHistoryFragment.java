@@ -1,12 +1,15 @@
 package com.silentcodder.smarthospital.Counter.Fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +41,9 @@ public class CounterHistoryFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+    CollectionReference appointmentRef;
+
     List<CounterAppointment> counterAppointment;
     CounterAppointmentAdapter counterAppointmentAdapter;
 
@@ -47,11 +53,40 @@ public class CounterHistoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_history_counter, container, false);
 
+        swipeRefreshLayout=(SwipeRefreshLayout) view.findViewById(R.id.refreshPage);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void onRefresh()
+            {
+                swipeRefreshLayout.setRefreshing(true);
+                refreshItem();
+            }
+        });
+
         mRecycleView = view.findViewById(R.id.recycleView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAppointment = view.findViewById(R.id.appointment);
 
+       loadData();
+
+        //Fragment Button
+        mAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new CounterHomeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+            }
+        });
+        return view;
+    }
+
+    private void refreshItem() {
+        loadData();
+    }
+
+    private void loadData() {
         //Recycle view
         counterAppointment = new ArrayList<>();
         counterAppointmentAdapter = new CounterAppointmentAdapter(counterAppointment);
@@ -59,15 +94,16 @@ public class CounterHistoryFragment extends Fragment {
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleView.setAdapter(counterAppointmentAdapter);
 
-        CollectionReference appointmentRef = firebaseFirestore.collection("Appointments");
+        appointmentRef = firebaseFirestore.collection("Appointments");
 
         Long date = System.currentTimeMillis();
         String dateString = (String) DateFormat
                 .format("dd MMM yyyy",new Date(date)).toString();
 
-
         Query query = appointmentRef.whereLessThan("AppointmentDate",dateString)
                 .orderBy("AppointmentDate",Query.Direction.DESCENDING);
+
+        swipeRefreshLayout.setRefreshing(false);
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -81,17 +117,6 @@ public class CounterHistoryFragment extends Fragment {
                 }
             }
         });
-
-
-        //Fragment Button
-        mAppointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new CounterHomeFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-            }
-        });
-
-        return view;
     }
+
 }

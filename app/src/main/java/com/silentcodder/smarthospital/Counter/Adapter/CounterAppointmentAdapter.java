@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.silentcodder.smarthospital.Counter.CounterChildFile;
 import com.silentcodder.smarthospital.Counter.Model.CounterAppointment;
 import com.silentcodder.smarthospital.R;
 import com.silentcodder.smarthospital.User.ChildFile;
@@ -52,7 +53,7 @@ public class CounterAppointmentAdapter extends RecyclerView.Adapter<CounterAppoi
         holder.mBtnShowFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ChildFile.class);
+                Intent intent = new Intent(context, CounterChildFile.class);
                 intent.putExtra("UserId",UserId);
                 context.startActivity(intent);
             }

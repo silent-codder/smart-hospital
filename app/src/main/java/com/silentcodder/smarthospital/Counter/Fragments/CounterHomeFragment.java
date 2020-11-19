@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -33,10 +34,12 @@ import java.util.List;
 public class CounterHomeFragment extends Fragment {
 
     RecyclerView mRecycleView;
-    TextView mData,mHistory;
+    TextView mHistory;
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+
+    SwipeRefreshLayout swipeRefreshLayout;
 
     List<CounterAppointment> counterAppointment;
     CounterAppointmentAdapter counterAppointmentAdapter;
@@ -46,15 +49,44 @@ public class CounterHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_counter_home, container, false);
+
+        swipeRefreshLayout=(SwipeRefreshLayout) view.findViewById(R.id.refreshPage);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void onRefresh()
+            {
+                refreshData();
+            }
+        });
+
         mRecycleView = view.findViewById(R.id.recycleView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mData = view.findViewById(R.id.data);
         mHistory = view.findViewById(R.id.history);
 
         UserId = firebaseAuth.getCurrentUser().getUid();
 
+        loadData();
 
+
+        //Fragment Button
+        mHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new CounterHistoryFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+            }
+        });
+
+        return view;
+    }
+
+    private void refreshData() {
+        loadData();
+    }
+
+    private void loadData() {
         //Recycle view
         counterAppointment = new ArrayList<>();
         counterAppointmentAdapter = new CounterAppointmentAdapter(counterAppointment);
@@ -72,6 +104,8 @@ public class CounterHomeFragment extends Fragment {
         Query query = appointmentRef.whereGreaterThanOrEqualTo("AppointmentDate",dateString)
                 .orderBy("AppointmentDate",Query.Direction.ASCENDING).limit(100);
 
+        swipeRefreshLayout.setRefreshing(false);
+
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -84,16 +118,5 @@ public class CounterHomeFragment extends Fragment {
                 }
             }
         });
-
-        //Fragment Button
-        mHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new CounterHistoryFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-            }
-        });
-
-        return view;
     }
 }

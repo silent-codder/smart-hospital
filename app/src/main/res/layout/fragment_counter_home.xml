@@ -9,51 +9,57 @@
     tools:context=".Counter.Fragments.CounterHomeFragment">
 
 
-    <RelativeLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/appointment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Appointment"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/white"/>
+      <RelativeLayout
+          android:id="@+id/layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/appointment"
-            android:text="History"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+          <Button
+              android:id="@+id/appointment"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Appointment"
+              android:textAllCaps="false"
+              android:textStyle="bold"
+              android:textSize="18sp"
+              android:textColor="@color/white"/>
 
-    </RelativeLayout>
+          <TextView
+              android:id="@+id/history"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@id/appointment"
+              android:text="History"
+              android:layout_alignParentRight="true"
+              android:gravity="center"
+              android:layout_centerVertical="true"
+              android:textAllCaps="false"
+              android:textSize="18sp"
+              android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout"
-        android:id="@+id/recycleView"/>
-   <TextView
-       android:id="@+id/data"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Today's no appointment"
-       android:visibility="gone"
-       android:layout_centerHorizontal="true"
-       android:layout_centerVertical="true"/>
+      </RelativeLayout>
+
+      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/refreshPage"
+          android:layout_below="@id/layout">
+
+          <androidx.recyclerview.widget.RecyclerView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@id/layout"
+              android:id="@+id/recycleView"/>
+
+      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+  </RelativeLayout>
 
 </RelativeLayout>

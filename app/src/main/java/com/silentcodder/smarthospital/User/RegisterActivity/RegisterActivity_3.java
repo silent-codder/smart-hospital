@@ -66,7 +66,7 @@ public class RegisterActivity_3 extends AppCompatActivity {
         pd = new ProgressDialog(this);
 
 
-        firebaseFirestore.collection("Users").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Child-Details").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (!value.isEmpty()){
@@ -78,6 +78,7 @@ public class RegisterActivity_3 extends AppCompatActivity {
                     }else {
                         fileNumber = size;
                     }
+
                 }
             }
         });
@@ -144,6 +145,7 @@ public class RegisterActivity_3 extends AppCompatActivity {
                    map.put("Child-Gender",gender);
                    map.put("Time-Stamp",System.currentTimeMillis());
                    map.put("File-Number", fileNumber);
+                   map.put("Parent-Id",UserId);
 
                    firebaseFirestore.collection("Child-Details").document(UserId).set(map)
                            .addOnCompleteListener(new OnCompleteListener<Void>() {
