@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.silentcodder.smarthospital.Counter.CounterMainActivity;
 import com.silentcodder.smarthospital.Counter.LoginPageCounter;
+import com.silentcodder.smarthospital.Doctor.DoctorLogin;
 
 public class SelectActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -36,6 +37,8 @@ public class SelectActivity extends AppCompatActivity implements AdapterView.OnI
             public void onClick(View v) {
                     if (selectCategory == "Counter"){
                         startActivity(new Intent(SelectActivity.this, LoginPageCounter.class));
+                    }else  if (selectCategory == "Doctor"){
+                        startActivity(new Intent(SelectActivity.this, DoctorLogin.class));
                     }
             }
         });

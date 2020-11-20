@@ -1,4 +1,4 @@
-package com.silentcodder.smarthospital.Counter;
+package com.silentcodder.smarthospital.Doctor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,13 +10,12 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.silentcodder.smarthospital.Counter.Fragments.CounterHomeFragment;
 import com.silentcodder.smarthospital.Counter.Fragments.CounterProfileFragment;
-import com.silentcodder.smarthospital.Counter.Fragments.CounterSearchFragment;
+import com.silentcodder.smarthospital.Doctor.Fragments.DoctorHomeFragment;
+import com.silentcodder.smarthospital.Doctor.Fragments.DoctorProfileFragment;
+import com.silentcodder.smarthospital.Doctor.Fragments.DoctorSearchFragment;
 import com.silentcodder.smarthospital.R;
-import com.silentcodder.smarthospital.User.Fragments.HistoryFragment;
-import com.silentcodder.smarthospital.User.Fragments.HomeFragment;
-import com.silentcodder.smarthospital.User.Fragments.ProfileFragment;
 
-public class CounterMainActivity extends AppCompatActivity {
+public class DoctorMainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     Fragment selectFragment;
@@ -24,7 +23,7 @@ public class CounterMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_counter);
+        setContentView(R.layout.activity_doctor_main);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,13 +32,13 @@ public class CounterMainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.nav_home :
-                        selectFragment = new CounterHomeFragment();
+                        selectFragment = new DoctorHomeFragment();
                         break;
                     case R.id.nav_search :
-                        selectFragment = new CounterSearchFragment();
+                        selectFragment = new DoctorSearchFragment();
                         break;
                     case R.id.nav_profile :
-                        selectFragment = new CounterProfileFragment();
+                        selectFragment = new DoctorProfileFragment();
                         break;
                 }
 
@@ -53,7 +52,7 @@ public class CounterMainActivity extends AppCompatActivity {
 
         });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CounterHomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DoctorHomeFragment()).commit();
 
     }
 }

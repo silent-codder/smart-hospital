@@ -42,7 +42,7 @@ public class RegisterActivity_3 extends AppCompatActivity {
     EditText mWeight;
     Calendar calendar;
     String gender,UserId;
-    String fileNumber;
+    String fileNumber,mPhone;
     int day,month,year;
     ProgressDialog pd;
 
@@ -65,6 +65,8 @@ public class RegisterActivity_3 extends AppCompatActivity {
         UserId = firebaseAuth.getCurrentUser().getUid();
         pd = new ProgressDialog(this);
 
+
+        mPhone = getIntent().getStringExtra("mobileNumber");
 
         firebaseFirestore.collection("Child-Details").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -139,13 +141,14 @@ public class RegisterActivity_3 extends AppCompatActivity {
                    pd.show();
 
                    HashMap<String,Object> map = new HashMap<>();
-                   map.put("Child-Name",ChildName);
-                   map.put("Child-DOB",ChildDOB);
-                   map.put("Child-Weight",Weight);
-                   map.put("Child-Gender",gender);
-                   map.put("Time-Stamp",System.currentTimeMillis());
-                   map.put("File-Number", fileNumber);
-                   map.put("Parent-Id",UserId);
+                   map.put("ChildName",ChildName);
+                   map.put("ChildDOB",ChildDOB);
+                   map.put("ChildWeight",Weight);
+                   map.put("ChildGender",gender);
+                   map.put("TimeStamp",System.currentTimeMillis());
+                   map.put("FileNumber", fileNumber);
+                   map.put("ParentId",UserId);
+                   map.put("MobileNumber",mPhone);
 
                    firebaseFirestore.collection("Child-Details").document(UserId).set(map)
                            .addOnCompleteListener(new OnCompleteListener<Void>() {

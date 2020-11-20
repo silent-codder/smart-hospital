@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHospital">
-        <activity android:name=".Counter.AddBill"></activity>
+        <activity android:name=".Doctor.DoctorMainActivity"></activity>
+        <activity android:name=".Doctor.DoctorLogin" />
+        <activity android:name=".Counter.AddBill" />
         <activity android:name=".Counter.CounterChildFile" />
         <activity android:name=".Counter.UpdateProfileActivity" />
-        <activity android:name=".Counter.LoginPageCounter" />
+        <activity android:name=".Counter.CounterMainActivity" />
         <activity android:name=".User.MainActivity" />
         <activity android:name=".SelectActivity" />
         <activity android:name=".User.ChildFile" />
@@ -28,7 +30,7 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".Counter.CounterMainActivity">
+        <activity android:name=".Counter.LoginPageCounter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

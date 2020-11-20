@@ -90,7 +90,9 @@ public class RegisterActivity_2 extends AppCompatActivity {
                                     if (task.isSuccessful()){
                                         pd.dismiss();
                                         Toast.makeText(RegisterActivity_2.this, "Upload", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(RegisterActivity_2.this,RegisterActivity_3.class));
+                                        Intent intent = new Intent(RegisterActivity_2.this,RegisterActivity_3.class);
+                                        intent.putExtra("mobileNumber",mPhone);
+                                        startActivity(intent);
                                         finish();
                                     }
                                 }
